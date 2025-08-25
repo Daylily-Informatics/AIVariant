@@ -19,11 +19,8 @@ ENV PATH=/opt/conda/bin:$PATH
 # Create conda environments following project instructions
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
     conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
-    conda create -y -n input_env && \
-    conda install -n input_env -y python=3.6.9 numpy -c conda-forge && \
-    conda install -n input_env -y -c bioconda samtools pysam  pyBigWig liftover && \
-    conda create -y -n eval_env && \
-    /opt/conda/envs/eval_env/bin/pip install 'tensorflow>=2.9' && \
+    conda env create -n input_env -f envs/input_env.yaml && \
+    conda env create -n eval_env -f  envs/eval_env.yaml && \
     conda clean -afy
 
 # Copy the AIVariant repository into the image
