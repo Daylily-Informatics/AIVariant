@@ -82,7 +82,7 @@ bash run.sh \
         -n $normal_bam \
         -r $ref_fasta \
         -g $genome_build \
-        -d $dbsnp \
+        -d $depth \
         -o $output_dir >> $log 2>&1;
 ```
 
