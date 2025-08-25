@@ -1,0 +1,15 @@
+channels:
+  - conda-forge
+  - bioconda
+  - anaconda
+  - r
+  - defaults
+dependencies:
+  - python=3.6.9
+  - numpy
+  - samtools=1.9
+  - pip
+  - pip:
+    - pysam==0.11.2.2
+    - pyBigWig==0.3.17
+    - liftover==1.1.14 
