@@ -16,12 +16,16 @@ RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.s
     rm /tmp/miniconda.sh
 ENV PATH=/opt/conda/bin:$PATH
 
-# Create conda environments
+# Create conda environments following project instructions
 RUN conda update -n base -y && \
-    conda create -y -n input_env python=3.10 numpy pybigwig pysam liftover && \
-    conda create -y -n eval_env python=3.10 numpy pybigwig pysam liftover tensorflow keras && \
-    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
-    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
+    conda create -y -n input_env && \
+    conda install -n input_env -y python=3.6.9 numpy -c conda-forge && \
+    conda install -n input_env -y samtools=1.9 -c bioconda && \
+    /opt/conda/envs/input_env/bin/pip install pysam==0.11.2.2 pyBigWig==0.3.17 liftover==1.1.14 && \
+    conda create -y -n eval_env && \
+    /opt/conda/envs/eval_env/bin/pip install 'tensorflow>=2.9' && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r && \
     conda clean -afy
 
 # Copy the AIVariant repository into the image
