@@ -59,6 +59,33 @@ cd AIVariant
 CUDA_VISIBLE_DEVICES={gpu id} bash run.sh -i {input environment name} -e {evaluation environment name} -t {tumor BAM file path} -n {normal BAM file path} -r {reference FASTA file path} -g {hg19 or hg38 depends on the reference} -o {output directory path} -d {estimated depth of input bam files}
 ```
 
+## Docker
+
+> `https://hub.docker.com/repository/docker/daylilyinformatics/aivariant/tags/0.14/`
+
+```bash
+docker pull daylilyinformatics/aivariant:0.14
+```
+
+## Singularity
+
+```bash
+apptainer pull docker://daylilyinformatics/aivariant:0.14
+
+apptainer run aivariant aivariant_0.14.sif
+bash
+cd /opt/AIVariant/AIVarient
+bash run.sh \
+        -i input_env \
+        -e eval_env \
+        -t $tumor_bam \
+        -n $normal_bam \
+        -r $ref_fasta \
+        -g $genome_build \
+        -d $dbsnp \
+        -o $output_dir >> $log 2>&1;
+```
+
 
 ## License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
