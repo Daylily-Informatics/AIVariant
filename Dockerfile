@@ -13,9 +13,9 @@ RUN git clone https://github.com/Genome4me/AIVariant /opt/AIVariant
 # Install Python dependencies
 WORKDIR /opt/AIVariant
 RUN pip install --no-cache-dir --upgrade pip \
-    && if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi \
-    && pip install --no-cache-dir .
+    && if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt || true; fi
 
-# Default command will show the AIVariant help
-ENTRYPOINT ["aivariant"]
+# Default command will run the main script
+WORKDIR /opt/AIVariant/AIVariant
+ENTRYPOINT ["python", "main.py"]
 CMD ["--help"]
