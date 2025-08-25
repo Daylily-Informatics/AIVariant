@@ -20,6 +20,8 @@ ENV PATH=/opt/conda/bin:$PATH
 RUN conda update -n base -y && \
     conda create -y -n input_env python=3.10 numpy pybigwig pysam liftover && \
     conda create -y -n eval_env python=3.10 numpy pybigwig pysam liftover tensorflow keras && \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
     conda clean -afy
 
 # Copy the AIVariant repository into the image
