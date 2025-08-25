@@ -35,4 +35,4 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
 
 # Default command will run the workflow script
 WORKDIR /opt/AIVariant/AIVariant
-ENTRYPOINT ["/opt/AIVariant/AIVariant/run.sh"]
+CMD ["/bin/bash"]
