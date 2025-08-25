@@ -1,5 +1,7 @@
 # AIVariant: a deeplearning based somatic variant detector for highly contaminated tumor samples
 
+VERSION: `0.15.1`
+
 ## Publication
 Please cite "".
 
