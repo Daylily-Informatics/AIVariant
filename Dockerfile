@@ -5,15 +5,16 @@ FROM python:3.10-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     build-essential \
+    samtools \
     && rm -rf /var/lib/apt/lists/*
 
-# Clone the AIVariant repository
-RUN git clone https://github.com/Genome4me/AIVariant /opt/AIVariant
+# Copy the AIVariant repository into the image
+WORKDIR /opt/AIVariant
+COPY . /opt/AIVariant
 
 # Install Python dependencies
-WORKDIR /opt/AIVariant
 RUN pip install --no-cache-dir --upgrade pip \
-    && if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt || true; fi
+    && pip install --no-cache-dir -r requirements.txt
 
 # Default command will run the main script
 WORKDIR /opt/AIVariant/AIVariant
