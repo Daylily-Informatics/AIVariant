@@ -61,10 +61,10 @@ CUDA_VISIBLE_DEVICES={gpu id} bash run.sh -i {input environment name} -e {evalua
 
 ## Docker
 
-> `https://hub.docker.com/repository/docker/daylilyinformatics/aivariant/tags/0.14/`
+> `https://hub.docker.com/repository/docker/daylilyinformatics/aivariant/tags/0.15/`
 
 ```bash
-docker pull daylilyinformatics/aivariant:0.14
+docker pull daylilyinformatics/aivariant:0.15
 ```
 
 ## Singularity
